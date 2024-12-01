@@ -1,13 +1,18 @@
+# Variables
 CC = gcc
 CFLAGS = -pthread -Wall
+TARGETS = core cliente
 
-all: core cliente
+# Reglas principales
+all: $(TARGETS)
 
-core: core.c
-	$(CC) $(CFLAGS) -o core core.c
+core: ProgramaCore.c
+	$(CC) $(CFLAGS) -o core ProgramaCore.c
 
-cliente: cliente.c
-	$(CC) $(CFLAGS) -o cliente cliente.c
+cliente: ProgramaCliente.c
+	$(CC) $(CFLAGS) -o cliente ProgramaCliente.c
 
+# Limpieza
 clean:
-	rm -f core cliente
+	rm -f $(TARGETS) *.o
+
